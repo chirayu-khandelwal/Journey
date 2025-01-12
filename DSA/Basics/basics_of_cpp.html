@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basics of C++</title>
+    <style>
+      code {
+        display: block;
+        background-color: #f4f4f4;
+        padding: 10px;
+        margin: 10px 0;
+        border-left: 3px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Including Libraries</h1>
+    <p>
+      C++ is a versatile language, and it relies on libraries to access various
+      functionalities. To perform tasks like input and output, we include
+      specific libraries at the beginning of our code. For instance,
+      <code>#include&lt;iostream&gt;</code> is used for input and output
+      operations, while <code>#include&lt;math.h&gt;</code> allows us to use
+      mathematical functions. Simply put, libraries provide pre-built functions
+      and tools for us to use in our code.
+    </p>
+
+    <h2>The Generic Skeleton</h2>
+    <p>
+      The generic skeleton of a C++ program consists of two main components: the
+      library inclusion and the main function. After including the necessary
+      libraries, you declare the main function using
+      <code>int main() { /* Your code here */ return 0; }</code>. This serves as
+      the entry point for your program.
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;// Your code here<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+
+    <h2>Output with cout</h2>
+    <p>
+      To display output in C++, you'll commonly use the
+      <code>cout</code> function from the iostream library. However, you need to
+      specify that it belongs to the <code>std</code> (standard) namespace. For
+      instance, <code>std::cout &lt;&lt; "Hey, lightshadow!";</code> will print
+      "Hey, lightshadow!" to the console. You enclose the text you want to
+      display within double quotation marks.
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Hey, lightshadow!";<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Output: Hey, lightshadow!</p>
+
+    <p>
+      If we want to print "Hey, lightshadow!" twice in 2 lines and we write
+      <code>std::cout &lt;&lt; "Hey, lightshadow!";</code> again and again then
+      it will print it consecutively on the same line.
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Hey, lightshadow!";<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Hey, lightshadow!";<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Output: Hey, lightshadow!Hey, lightshadow!</p>
+
+    <p>
+      You can use the newline character <code>\n</code> to insert a line break
+      within a single <code>std::cout</code> statement. Here's the code and its
+      corresponding terminal output:
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Hey, lightshadow!" &lt;&lt;
+      "\n";<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Hey, lightshadow!";<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Output:</p>
+    <p>Hey, lightshadow!</p>
+    <p>Hey, lightshadow!</p>
+
+    <p>
+      As you can see, the newline character <code>\n</code> inserts a line
+      break, but the second "Hey, lightshadow!" is still on the same line as the
+      first one. You can also use <code>std::endl</code> to insert a newline
+      character and flush the output buffer. Here's the code and its
+      corresponding terminal output:
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Hey, lightshadow!" &lt;&lt;
+      std::endl;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Hey, lightshadow!";<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Output:</p>
+    <p>Hey, lightshadow!</p>
+    <p>Hey, lightshadow!</p>
+
+    <p>
+      Using <code>\n</code> for line breaks in C++ is a common and efficient way
+      to achieve the desired output. It's a simple and straightforward approach,
+      and it's typically faster than other methods for adding line breaks, such
+      as using <code>std::endl</code>.
+    </p>
+
+    <h2>using namespace std</h2>
+    <p>
+      By adding <code>using namespace std;</code> at the beginning of your
+      program, you're telling the compiler that you want to use all the names
+      from the <code>std</code> namespace without explicitly specifying
+      <code>std::</code> each time. This can make your code cleaner and more
+      concise.
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br />
+      using namespace std;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Hey, lightshadow!" &lt;&lt;
+      endl;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Hey, lightshadow!";<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Output:</p>
+    <p>Hey, lightshadow!</p>
+    <p>Hey, lightshadow!</p>
+
+    <p>
+      <code>using namespace std;</code> is a useful shortcut for simplifying
+      your C++ code, especially when you're learning the language and writing
+      smaller programs. It helps reduce clutter and makes your code more
+      readable. However, as your programming projects grow in complexity,
+      consider using it sparingly to avoid potential naming conflicts. It's a
+      tool that can make your C++ journey smoother, so use it wisely.
+    </p>
+
+    <h2>Taking User Input using cin</h2>
+    <p>
+      One of the fundamental aspects of programming is taking input from the
+      user. In C++, this is achieved with the help of the
+      <code>cin</code> stream, which allows you to receive input from the user
+      via the terminal or console.
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br />
+      using namespace std;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;int x;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; x;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Value of x: " &lt;&lt; x;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Input: 10</p>
+    <p>Output: Value of x: 10</p>
+
+    <p>
+      When you run this program and enter a value (e.g., 10) in the terminal,
+      <code>cin</code> captures that value, stores it in the variable
+      <code>x</code>, and then displays it using <code>cout</code>. Here's how
+      it works:
+    </p>
+    <ul>
+      <li>The program waits for user input.</li>
+      <li>You enter a value (e.g., 10) and press Enter.</li>
+      <li>
+        <code>cin</code> reads the entered value and stores it in the variable
+        <code>x</code>.
+      </li>
+      <li><code>cout</code> then displays the value of <code>x</code>.</li>
+    </ul>
+
+    <p>
+      To accept multiple inputs, we can simply use the
+      <code>&gt;&gt;</code> operator with <code>cin</code> for each variable we
+      want to receive input for. Let's demonstrate this by taking two variables,
+      <code>x</code>, and <code>y</code>, as input and displaying their values:
+    </p>
+    <code>
+      #include&lt;iostream&gt;<br />
+      using namespace std;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;int x;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;int y;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; x &gt;&gt; y;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Value of x: " &lt;&lt; x &lt;&lt; "
+      and y: " &lt;&lt; y;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Input: 10 20</p>
+    <p>Output: Value of x: 10 and y: 20</p>
+
+    <p>
+      When you run this program, it waits for two separate inputs from the user,
+      which should be entered one after the other, separated by spaces or Enter
+      key presses. Here's how it works:
+    </p>
+    <ul>
+      <li>The program waits for the first input (for <code>x</code>).</li>
+      <li>You enter a value (e.g., 10) and press Enter.</li>
+      <li><code>cin</code> reads and stores the value in <code>x</code>.</li>
+      <li>The program then waits for the second input (for <code>y</code>).</li>
+      <li>You enter another value (e.g., 20) and press Enter.</li>
+      <li><code>cin</code> reads and stores this value in <code>y</code>.</li>
+    </ul>
+
+    <h2>Note:</h2>
+    <p>
+      To make the process more convenient, there's a shortcut that allows you to
+      include almost all standard libraries at once using
+      <code>#include&lt;bits/stdc++.h&gt;</code>.
+    </p>
+    <p>
+      The <code>bits/stdc++.h</code> header is a shortcut that includes a vast
+      number of standard C++ libraries, making it easier to access a wide range
+      of functions and classes without specifying each library individually.
+      It's a time-saving approach for programmers, especially when you need
+      several standard libraries in your code.
+    </p>
+    <p>
+      However, it's important to be aware of potential compatibility issues and
+      consider the impact on compile time, especially in large projects. When
+      used judiciously, it can be a valuable asset in streamlining your C++
+      development process.
+    </p>
+    <code>
+      #include&lt;bits/stdc++.h&gt;<br />
+      using namespace std;<br /><br />
+      int main() {<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;int x;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;int y;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; x &gt;&gt; y;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; "Value of x: " &lt;&lt; x &lt;&lt; "
+      and y: " &lt;&lt; y;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;return 0;<br />
+      }
+    </code>
+    <p>Input: 10 20</p>
+    <p>Output: Value of x: 10 and y: 20</p>
+  </body>
+</html>
